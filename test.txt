@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .video-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weekly Muscle-Building Workout Plan</h1>
+    
+    <div id="video-container" class="video-container">
+        <!-- Placeholder for video iframe -->
+        <iframe id="workout-video" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    
+    <div class="controls">
+        <button onclick="prevVideo()">Previous</button>
+        <button onclick="nextVideo()">Next</button>
+        <button id="start-button">Start</button>
+    </div>
+    
+    <script>
+        const videos = [
+            "https://www.youtube.com/embed/VIDEO_ID_1",
+            "https://www.youtube.com/embed/VIDEO_ID_2",
+            "https://www.youtube.com/embed/VIDEO_ID_3" // Add more video IDs as needed
+        ];
+        let currentVideoIndex = 0;
+
+        document.getElementById("start-button").onclick = function() {
+            playVideo(currentVideoIndex);
+        };
+
+        function playVideo(index) {
+            const videoElement = document.getElementById("workout-video");
+            videoElement.src = videos[index];
+        }
+
+        function nextVideo() {
+            if (currentVideoIndex < videos.length - 1) {
+                currentVideoIndex++;
+                playVideo(currentVideoIndex);
+            }
+        }
+
+        function prevVideo() {
+            if (currentVideoIndex > 0) {
+                currentVideoIndex--;
+                playVideo(currentVideoIndex);
+            }
+        }
+    </script>
+</body>
+</html>
